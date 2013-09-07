@@ -13,11 +13,11 @@ class Owner < ActiveRecord::Base
 
   #Validations
   validates :name,	:presence => true,
-  					:with => /^[^0-9`!@#\$%\^&*+_=]+$/
+  					:format => {:with => /^[^0-9`!@#\$%\^&*+_=]+$/}
 
-  validates :email, :presence => true, 
-  					:uniqueness => true, 
-  					:format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+  validates :email, :presence => true,
+            :email_format => {:message => 'is not looking good'},
+  					:uniqueness => true 
 
 	def has_ownership?(restaurant)
 		self.restaurants.find_by_id(restaurant.id).present?
