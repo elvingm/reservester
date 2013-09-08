@@ -17,5 +17,3 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore seeds.rb file
-/db/seeds.rb
