@@ -1,6 +1,6 @@
 /* Example tokeninput style #2: Facebook style */
 ul.token-input-list-facebook {
-    /*overflow: hidden;*/ 
+    overflow: hidden; 
     height: auto !important; 
     height: 1%;
     width: 400px;
@@ -27,7 +27,7 @@ ul.token-input-list-facebook li input {
 }
 
 li.token-input-token-facebook {
-    /*overflow: hidden;*/ 
+    overflow: hidden; 
     height: auto !important; 
     height: 15px;
     margin: 3px;
@@ -74,7 +74,7 @@ div.token-input-dropdown-facebook {
     position: absolute;
     width: 400px;
     background-color: #fff;
-    /*overflow: hidden;*/
+    overflow: hidden;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
