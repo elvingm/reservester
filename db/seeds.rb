@@ -6,8 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-owner1 = Owner.create(:name => 'Seeded Owner3', :email => 'seedOwner1@gmail.com', :password => 'test12345', :password_confirmation => 'test12345')
-owner2 = Owner.create(:name => 'Seeded Owner4', :email => 'seedOwner2@gmail.com', :password => 'test12345', :password_confirmation => 'test12345')
+owner1 = Owner.new(:name => 'Seeded Owner1', :email => 'seedOwner1@gmail.com', :password => 'test12345', :password_confirmation => 'test12345')
+owner1.save
+owner2 = Owner.create(:name => 'Seeded Owner2', :email => 'seedOwner2@gmail.com', :password => 'test12345', :password_confirmation => 'test12345')
+owner2.save
 
 owner1_restaurant_list = [
 	["Black Iron Burger", "212-677-6067", "540 E 5th St New York, NY 10009", "Great burger and bar in the East Village. Iron Horse is their signature burger."],
@@ -19,13 +21,11 @@ owner2_restaurant_list = [
 ]
 
 owner1_restaurant_list.each do |name, phone, address, description|
-	owner1 = Owner.find(1)
-	owner1.restaurants.create( :name => name, :phone => phone, :address => address, :description => description)
+	owner1.restaurants.build( :name => name, :phone => phone, :address => address, :description => description)
 end
 
 owner2_restaurant_list.each do |name, phone, address, description|
-	owner2 = Owner.find(2)
-	owner2.restaurants.create( :name => name, :phone => phone, :address => address, :description => description)
+	owner2.restaurants.build( :name => name, :phone => phone, :address => address, :description => description)
 end
 
 
