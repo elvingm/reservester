@@ -1,41 +1,30 @@
 <%- model_class = Restaurant -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Welcome to Reservester</h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="row">
     <% @restaurants.each do |restaurant| %>
-      <tr>
-      	<td><%= image_tag restaurant.image_url(:thumb).to_s %></td>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.phone %></td>
-        <td><%= restaurant.address %></td>
-        <td><%= restaurant.description %></td>
-        <% if current_owner == restaurant.owner %>
-          <td>
-          <%= link_to t('.new', :default => t("helpers.links.new")), new_restaurant_path, :class => 'btn btn-mini' %>
-          <%= link_to t('.show', :default => t("helpers.links.show")), restaurant, :class => 'btn btn-mini' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                  restaurant_path(restaurant),
-                  :method => :delete,
-                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                  :class => 'btn btn-mini btn-danger' %>
-          </td>
-        <% else %>
-          <td><%= link_to t('.show', :default => t("helpers.links.show")), restaurant, :class => 'btn btn-mini' %></td>
-        <% end %>
-      </tr>
+        <div class="span3">
+          <h3><%= restaurant.name %></h3>
+          <%= image_tag restaurant.image_url(:thumb).to_s %></br>
+          <%= restaurant.address %></br></br>
+          <%= restaurant.description %></br></br>
+          <% if current_owner == restaurant.owner %>
+            <%= link_to t('.new', :default => t("helpers.links.new")), new_restaurant_path, :class => 'btn btn-mini' %>
+            <%= link_to t('.show', :default => t("helpers.links.show")), restaurant, :class => 'btn btn-mini' %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    restaurant_path(restaurant),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+            <%= link_to t('.show', :default => t("helpers.links.show")), restaurant, :class => 'btn btn-mini' %>
+          <% end %>
+        </div>
     <% end %>
+  </div>
+    
   </tbody>
 </table>

@@ -14,18 +14,26 @@
   <dd><%= @restaurant.address %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd>
-  <dt><strong>Categories</strong>
-  <dd>
-      <% @restaurant.categories.each do |category| %>
-      <%= category.name %>
-      <% end %>
-  </dd>
+  <% if @restaurant.categories.empty? %>
+    <dt><strong>Categories:</strong></dt>
+    <dd><em>*Restaurant not yet categorized</em></dd>
+  <% else %>
+    <dt><strong>Categories:</strong>
+      <dd>
+          <% @restaurant.categories.each do |category| %>
+          <%= category.name %>
+          <% end %>
+      </dd>
+    </dt>
+  <% end %>
   <% if current_owner == @restaurant.owner %> 
-    <dt><strong>Reservations</strong>
+    <dt><strong>Reservations:</strong></br>
       <% @restaurant.reservations.each do |reservation| %>
-        <dd><%= reservation.name %></dd> 
-        <dd><%= reservation.email %></dd> 
-        <dd><%= reservation.reserved_for.strftime("%A, %b %d, %Y, at %I:%M%p" ) %></dd>
+        <dd>
+        <%= reservation.name %> </br>
+        <%= reservation.email %> </br>
+        <%= reservation.reserved_for.strftime("%A, %b %d, %Y, at %I:%M%p" ) %></br>
+        </dd>
     </dt>
         <hr>
       <% end %>
