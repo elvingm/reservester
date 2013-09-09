@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'rake', '10.1.0'
-gem 'pg'
 gem 'twitter-bootstrap-rails'
 
 group :assets do
@@ -18,6 +17,10 @@ group :test, :development do
   gem 'capybara'
   gem 'launchy'
   gem 'debugger'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
