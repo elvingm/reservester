@@ -8,7 +8,7 @@
           <h3><%= restaurant.name %></h3>
           <%= image_tag restaurant.image_url(:thumb).to_s %></br>
           <%= restaurant.address %></br></br>
-          <%= restaurant.description %>
+          <%= restaurant.description %></br></br>
           <% if current_owner == restaurant.owner %>
             <%= link_to t('.new', :default => t("helpers.links.new")), new_restaurant_path, :class => 'btn btn-mini' %>
             <%= link_to t('.show', :default => t("helpers.links.show")), restaurant, :class => 'btn btn-mini' %>
